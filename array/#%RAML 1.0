@@ -1,0 +1,176 @@
+#%RAML 1.0
+title: field-service-convention
+baseUri: https://apihml-corp.cielo.com.br/cielo-field-service-prc-hml/convention/v1
+description: API responsável por expor recursos relacionados a feiras/eventos.
+/conventions:
+  post:
+    displayName: Criação de feiras/eventos.
+    description: Operação responsável por criar uma feira/evento.
+    headers:
+      Authorization:
+        description: Bearer Token
+        required: true
+        type: string
+    body:
+        application/json: 
+          type: object
+          properties: 
+              convention: 
+              type: object
+      properties: 
+        name: 
+          type: string
+          example: ""
+        exhibitorsNumber: 
+          type: integer
+          example: ""        
+        estimatedRevenue: 
+          type: integer
+          example: 10
+        instalationDate: 
+          type: string
+          example: ""
+        desinstalationDate: 
+          type: string
+          example: ""
+        simCard: 
+          type: string
+          example: ""
+        isManaged: 
+          type: boolean
+          example: false
+      organizer: 
+      type: object
+      properties: 
+        organizerName: 
+          type: string
+          example: ""
+        organizerCNPJ: 
+          type: string
+          example: ""
+        organizerEmail: 
+          type: string
+          example: ""
+        organizerSite: 
+          type: string
+          example: ""
+        organizerContact: 
+          type: object
+          properties: 
+            contactName: 
+              type: string
+              example: ""
+            areaCode: 
+              type: string
+              example: ""
+            phoneNumber: 
+              type: string
+              example: ""
+      responsibleContact: 
+          type: object
+          properties: 
+            contactName: 
+              type: string
+              example: ""
+            areaCode: 
+              type: string
+              example: ""
+            phoneNumber: 
+              type: string   
+              example: "" 
+      address: 
+      type: object
+      properties: 
+        eventPlace: 
+          type: string
+          example: ""
+        enviroment: 
+          type: string
+          example: ""
+        entranceGate: 
+          type: string
+          example: ""
+        street: 
+          type: string
+          example: ""
+        streetNumber: 
+          type: string
+          example: ""
+        complement: 
+          type: string
+          example: ""
+        neighborhood: 
+          type: string
+          example: ""
+        city: 
+          type: string
+          example: ""
+        state: 
+          type: string
+          example: ""
+        zipCode: 
+          type: string
+          example: ""
+        landMark: 
+          type: string
+          example: ""
+      equipment: 
+      type: array
+      items: 
+          type: object
+          properties: 
+            technologyCode: 
+              type: string
+              example: ""
+            equipmentAmount: 
+              type: integer
+              example: 10
+      onDuty: 
+        type: boolean
+        example: false
+      schedule: 
+      type: object
+      properties: 
+        startDate: 
+          type: string
+          example: ""
+        endDate: 
+          type: string
+          example: ""
+        operatingHours: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              dayOfWeek: 
+                type: string
+                example: ""
+              startTime: 
+                type: string
+                example: ""
+              endTime: 
+                type: string
+                example: ""
+      responses:
+            201:
+              description: Created
+            400:
+              body:
+                application/json:
+                  !include response-errors.raml
+            403:
+              body:
+                application/json:
+                  !include response-errors.raml
+            404:
+              body:
+                application/json:
+                  !include response-errors.raml
+            422:
+              body:
+                application/json:
+                  !include response-errors.raml
+            500:
+              body:
+                application/json:
+                  !include response-errors.raml
