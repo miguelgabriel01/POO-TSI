@@ -7,9 +7,6 @@ public class DadosPessoaisBasicos {
     protected String telefoneDeContato;
     protected String email;
 
-    //dados exclusivos do funcionario
-    protected String matriculaFuncional;
-
     //criamos o construtor da class
     public DadosPessoaisBasicos(  String nomeCompleto, String cpf, String endereco, String telefoneDeContato, String email){
         this.setNomeCompleto(nomeCompleto);
